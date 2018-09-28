@@ -1,4 +1,3 @@
-
 const secondsHand = document.querySelector('.second');
 const minutesHand = document.querySelector('.minute');
 const hoursHand = document.querySelector('.hour')
