@@ -3,6 +3,14 @@ const minutesHand = document.querySelector(".minute");
 const hoursHand = document.querySelector(".hour");
 const body = document.getElementsByTagName("BODY")[0];
 
+const indicators = document.querySelectorAll(".indicator");
+
+let previous = 0;
+indicators.forEach(indicator => {
+  indicator.style.transform = `rotateZ(${previous}deg)`;
+  previous += 6;
+});
+
 function setDate() {
   const now = new Date();
   const seconds = now.getSeconds();
@@ -15,10 +23,13 @@ function setDate() {
   minutesHand.style.transform = `rotate(${minutesDegree}deg)`;
   hoursHand.style.transform = `rotate(${hoursDegree}deg)`;
 
+  const text = document.querySelector("p");
   changeBackground();
   function changeBackground() {
     if (hours >= 20 || hours < 5) {
-      body.style.backgroundImage = "linear-gradient(MidnightBlue , black)";
+      body.style.backgroundImage = "linear-gradient(darkblue, black)";
+      text.style.color = "white";
+      text.style.textShadow = "2px 2px 100px white";
     } else if (hours >= 12 && hours < 20) {
       body.style.backgroundImage = "linear-gradient(yellow, orange)";
     } else {
